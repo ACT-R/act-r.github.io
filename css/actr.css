@@ -24,25 +24,36 @@ h2 {
   font-size: 30px;
   font-weight: 100; }
 
+.caption-box {
+  margin: 10px 10px 10px 10px;
+  background-color: #EEE; }
+  .caption-box .img-wrapper {
+    padding: 20px; }
+    .caption-box .img-wrapper img {
+      max-width: 400px; }
+  .caption-box .text-wrapper {
+    padding: 10px;
+    font-size: 14px; }
+
 section#header {
   text-align: center;
-  margin-bottom: 120px; }
+  margin-bottom: 120px;
+  height: 100vh; }
   section#header img {
     height: 200px; }
   section#header h1 {
     font-size: 60px;
     font-weight: 100; }
-  section#header .play-button {
-    margin-top: 60px; }
+  section#header a {
+    width: 200px; }
+    section#header a.play-button {
+      margin-top: 10px; }
+    section#header a.github-button {
+      margin-top: 100px;
+      background-color: #3498db; }
 
-section#game .game-image {
-  margin: 50px;
-  background-color: #EEE; }
-  section#game .game-image .img-wrapper {
-    background-color: #000;
-    padding: 20px; }
-  section#game .game-image .text-wrapper {
-    padding: 10px; }
+section#about {
+  margin-top: 0px; }
 
 section#lessons .uk-tab > li {
   line-height: 40px; }
@@ -50,6 +61,13 @@ section#lessons #lesson-switcher h2 {
   font-weight: 100; }
   section#lessons #lesson-switcher h2 > span {
     color: #999; }
+
+section#interface iframe {
+  width: 100%;
+  height: 57%; }
+
+section#design .uk-tab > li {
+  line-height: 40px; }
 
 section#footer {
   padding: 30px;

@@ -12,8 +12,8 @@
     <!-- UIKit Import -->
     <link rel="stylesheet" href="lib/uikit/dist/css/uikit.min.css" />
     <script src="lib/jquery/dist/jquery.min.js"></script>
-    <script src="lib/uikit/dist/js/uikit-icons.min.js"></script>
     <script src="lib/uikit/dist/js/uikit.min.js"></script>
+    <script src="lib/uikit/dist/js/uikit-icons.min.js"></script>
 
     <!-- Style Import -->
     <link rel="stylesheet" href="css/actr.css">
@@ -29,12 +29,18 @@
       <img src="img/header.png" />
       <h1> ACT-R Lemonade Stand </h1>
 
-      <a class="play-button uk-button uk-button-danger uk-box-shadow-hover-medium uk-button-large" href="http://actr-lemonade-stand.herokuapp.com">
+      <a class="github-button uk-button uk-button-primary uk-box-shadow-hover-medium uk-button-large" href="https://github.com/ACT-R" uk-icon="icon: github">
+        GitHub
+      </a><br>
+
+      <a class="play-button uk-button uk-button-danger uk-box-shadow-hover-medium uk-button-large" href="http://actr-lemonade-stand.herokuapp.com" uk-icon="icon: play-circle">
         Play Now!
       </a>
       <p class="uk-article-meta">
         Note: our server runs on demand, so be patient.
       </p>
+
+
 
     </section>
 
@@ -75,58 +81,72 @@
 
     <section id="game" class="uk-article">
         <h1 class="uk-heading-divider">The Game</h1>
+
+        <h2> How do you play Lemonade Stand?</h2>
         <p>
           The Lemonade Stand Game is a commonly-used teaching tool for
           elementary school mathematics.  There are many implementations of the
-          game (<a href="http://www.primarygames.com/socstudies/sim-lemonade-millionaire/">
-          Lemonade Millionaire</a>, for example), but all tend to have a similar
+          game (<a href="http://www.primarygames.com/socstudies/sim-lemonade-millionaire/">Lemonade Millionaire</a>,
+          for example), but all tend to have a similar
           game cycle:
         </p>
 
-        <ul class="uk-list" style="font-size:14px; margin-left: 40px;">
-            <li>
-              <b> Inventory View </b><br>
-              The user is shown a screen listing the quantity of lemonade
-              ingredients (Lemons, Sugar, Ice and Cups) in their inventory, as
-              well as their score (usually a dollar amount).
-            </li>
-            <li>
-              <b> Weather View </b><br>
-              The user is then shown a screen with a weather forecast, which
-              is predictive of the number of customers willing to buy
-              lemonade during that particular game cycle.
-            </li>
-            <li>
-              <b> Purchase Option </b><br>
-              The user is given the option to purchase each of the inventory
-              items (Lemons, Sugar, Ice and Cups) for a certain cost.
-            </li>
-            <li>
-              <b> End-Of-Day View </b><br>
-              Once the user has selected the option to purchase items, the day
-              begins.  The game simulates the number of cups of lemonade sold,
-              and the cycle repeats.
-            </li>
-        </ul>
-
-      <p>
-        While it naively might seem like an optimal strategy to buy the maximum
-        quantity of ingredients, the ingredients each have a probability of being
-        lost- ice melts at the end of each day, and lemons and sugar spoil with
-        some small probability. Thus, a good player must learn to purchase the
-        items in the appropriate ratio, and in just the right quantity to
-        “scrape by” for the day.
-      </p>
-
-      <div class="game-image">
-        <div class="img-wrapper">
-          <img src="img/game.png" />
+        <div class="uk-child-width-1-2@s" uk-grid>
+          <div>
+            <div class="caption-box">
+                <div class="img-wrapper" style="background-color:#fff">
+                  <img src="img/lm_1.png"/>
+                </div>
+                <div class="text-wrapper">
+                  <b> 1) Inventory View </b><br>
+                  The user is shown a screen listing the quantity of lemonade
+                  ingredients (Lemons, Sugar, Ice and Cups) in their inventory, as
+                  well as their score (usually a dollar amount).
+                </div>
+            </div>
+          </div>
+          <div>
+            <div class="caption-box">
+                <div class="img-wrapper" style="background-color:#fff">
+                  <img src="img/lm_3.png"/>
+                </div>
+                <div class="text-wrapper">
+                  <b> 2) Weather View </b><br>
+                  The user is then shown a screen with a weather forecast, which
+                  is predictive of the number of customers willing to buy
+                  lemonade during that particular game cycle.
+                </div>
+            </div>
+          </div>
+          <div>
+            <div class="caption-box">
+                <div class="img-wrapper" style="background-color:#fff">
+                  <img src="img/lm_2.png"/>
+                </div>
+                <div class="text-wrapper">
+                  <b> 3) Purchase Option </b><br>
+                  The user is given the option to purchase each of the inventory
+                  items (Lemons, Sugar, Ice and Cups) for a certain cost.  This
+                  implementation has bulk options (not included in our version).
+                </div>
+            </div>
+          </div>
+          <div>
+            <div class="caption-box">
+                <div class="img-wrapper" style="background-color:#fff">
+                  <img src="img/lm_4.png"/>
+                </div>
+                <div class="text-wrapper">
+                  <b> 4) End-Of-Day View </b><br>
+                  Once the user has completed their turn, the day
+                  begins.  The game simulates the number of cups of lemonade sold,
+                  and the cycle repeats.
+                </div>
+            </div>
+          </div>
         </div>
-        <div class="text-wrapper">
-          Command-Line version of the Game.
-        </div>
-      </div>
 
+      <h2> How does the Game Work?</h2>
       <p>
         The Lemonade Stand Game is a particularly good case study
         for teaching ACT-R because there are a number of models, increasing in
@@ -135,33 +155,91 @@
         with the following game dynamics:
       </p>
 
-      <ul class="uk-list" style="font-size:14px; margin-left: 40px;">
-          <li>
-            <b> Inventory View </b><br>
-            The user is shown a screen listing the quantity of lemonade
-            ingredients (Lemons, Sugar, Ice and Cups) in their inventory, as
-            well as their score (usually a dollar amount).
-          </li>
-          <li>
-            <b> Weather View </b><br>
-            The user is then shown a screen with a weather forecast, which
-            is predictive of the number of customers willing to buy
-            lemonade during that particular game cycle.
-          </li>
-          <li>
-            <b> Purchase Option </b><br>
-            The user is given the option to purchase each of the inventory
-            items (Lemons, Sugar, Ice and Cups) for a certain cost.
-          </li>
-          <li>
-            <b> End-Of-Day View </b><br>
-            Once the user has selected the option to purchase items, the day
-            begins.  The game simulates the number of cups of lemonade sold,
-            and the cycle repeats.
-          </li>
-      </ul>
+      <div class="uk-child-width-1-2@s" uk-grid>
+        <div style="font-size:14px;">
+            <p>
+              <b>Purchase Costs</b><br>
+              The costs associated with each item are statically
+              determined.  While this changes the slope of profit over
+              time, it doesn't effect the optimal strategy.
+            </p>
 
+            <p>
+              <b>Weather</b><br>
+              The weather condition (Sunny, Cloudy, Rainy, Snowy)
+              is determined via the output of a random
+              Markov chain (pictured right). The game begins in the
+              Sunny state, and transitions with probability
+              1/3 in either direction (unless at the end of the chain).
+              The temperature is determined from a given state based on a
+              uniform distribuition specific to each condition.
+            </p>
+            <p>
+              <b>Inventory Effects</b><br>
+              The inventory spoils with a specified, independent probability
+              for each day. Ice spoils every day, lemons spoil with probability
+              (1/3), and sugar spoils with probability (1/4).
+            </p>
 
+            <p>
+              <b>Cups Sold</b><br>
+              Each cup of lemonade requires a number of inventory items,
+              specified by a recipe. On a given day, the number of customers
+              is determined by a weather condition-specific multiplier
+              times the temperature (shown at right). Thus the cups sold is the
+              minimum of the (inventory / recipe), and the number of customers.
+            </p>
+        </div>
+        <div>
+          <div class="caption-box" style="margin-top:100px;">
+            <div class="img-wrapper" style="background-color:#fff">
+              <img src="img/markov.png"/>
+            </div>
+            <div class="text-wrapper">
+              Markov Model used to determine the number of cups sold.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2> How do I win? </h2>
+      <div class="uk-child-width-1-2@s" uk-grid>
+        <div>
+          <p>
+            While it naively might seem like an optimal strategy to buy the maximum
+            quantity of ingredients, the ingredients each have a probability of being
+            lost- ice melts at the end of each day, and lemons and sugar spoil with
+            some small probability. Thus, a good player must learn to purchase the
+            items in the appropriate ratio, and in just the right quantity to
+            “scrape by” for the day.
+          </p>
+          <p>
+            The Lemonade Stand Game has an optimal strategy- that is, one could
+            perform a series of calculations and determine the "correct" move
+            at each stage in the game to maximize profit.  While someone might
+            do this for running an actual small business, this is not typical
+            of the way individuals play the game- instead, they estimate
+            using their knowledge of previous results, a process which is called
+            "Utility Learning" in ACT-R.  In the Lemonade Stand Game Tutorial,
+            students will learn to build a model for both of these approaches.
+          </p>
+        </div>
+        <div>
+          <div class="caption-box">
+            <div class="img-wrapper" style="background-color:#000">
+              <img src="img/game.png" />
+            </div>
+            <div class="text-wrapper">
+              Command-Line version of the Game.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="interface" class="uk-article">
+        <h1 class="uk-heading-divider">Interface</h1>
+        <iframe src="https://www.youtube.com/embed/mOdUHqGPCDo?showinfo=0" frameborder="0" allowfullscreen></iframe>
     </section>
 
     <section id="lessons" class="uk-article">
@@ -174,25 +252,22 @@
                 <li><a href="#">Unit 2</a></li>
                 <li><a href="#">Unit 3</a></li>
                 <li><a href="#">Unit 4</a></li>
-                <li><a href="#">Unit 5</a></li>
             </ul>
           </div>
           <div class="uk-width-expand@m">
             <ul class="uk-switcher lesson-switcher">
                 <li>
-                  <h2> Procedures <span> | Unit 1 </span> </h2>
+                  <h2> Fixed Strategy <span> | Unit 1 </span> </h2>
+
                 </li>
                 <li>
-                  <h2> Procedures <span> | Unit 2 </span> </h2>
+                  <h2> Visual Module <span> | Unit 2 </span> </h2>
                 </li>
                 <li>
-                  <h2> Procedures <span> | Unit 3 </span> </h2>
+                  <h2> Declarative Module <span> | Unit 3 </span> </h2>
                 </li>
                 <li>
-                  <h2> Procedures <span> | Unit 4 </span> </h2>
-                </li>
-                <li>
-                  <h2> Procedures <span> | Unit 5 </span> </h2>
+                  <h2> Utility Learning <span> | Unit 4 </span> </h2>
                 </li>
             </ul>
           </div>
@@ -200,46 +275,77 @@
     </section>
 
     <section id="design" class="uk-article">
-        <h1 class="uk-heading-divider">Design</h1>
+        <h1 class="uk-heading-divider">Architecture</h1>
 
-        <img src="img/diagram.png" />
+        <div uk-grid>
+          <div class="uk-width-auto@m">
+            <ul class="uk-tab-left" uk-tab='connect: .design-switcher'>
+                <li><a href="#">Overview</a></li>
+                <li><a href="#">Game</a></li>
+                <li><a href="#">ACT-R</a></li>
+                <li><a href="#">Blocks</a></li>
+                <li><a href="#">Deployment</a></li>
+            </ul>
+          </div>
+          <div class="uk-width-expand@m">
+            <ul class="uk-switcher design-switcher">
+                <li>
+                  <h2> Design Overview </h2>
 
-        <p>
-        </p>
+                  <div class="caption-box">
+                    <div class="img-wrapper" style="background-color:#FFF">
+                      <img src="img/diagram.png" style="max-width:700px;" />
+                    </div>
+                  </div>
 
-        <a class="github-button uk-button uk-button-secondary uk-box-shadow-hover-medium uk-button-large" href="http://actr-lemonade-stand.herokuapp.com">
-          View on GitHub
-        </a>
+                </li>
+                <li>
+                  <h2> Lemonade Stand Game </h2>
+                </li>
+                <li>
+                  <h2> ACT-R Interface </span> </h2>
+                </li>
+                <li>
+                  <h2> Block Interface </h2>
+                </li>
+                <li>
+                  <h2> Deployment </h2>
+
+                </li>
+            </ul>
+          </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
-    <section id="footer">
+    <section id="footer" style="font-size:14px; ">
       <h1 class="uk-heading-divider">Citations</h1>
 
-      <p>
-        <b> ACT-R Lemonade Stand </b></br>
+      <div class="uk-child-width-1-3@s" uk-grid>
+        <div>
+          <b> ACT-R Lemonade Stand </b></br>
+          Developed by <a href="http://derektbrown.com">Derek Brown</a>, an undergraduate
+          student at Carnegie Mellon University as part of John Anderson's
+          course, <a href="https://www.andrew.cmu.edu/course/85-412/">85-412 Cognitive Modelling</a>.
+        </div>
+        <div>
+          <b> ACT-R </b></br>
+          Developed by John Anderson, Dan Bothell, Christian Lebiere and
+          other members of the <a href="http://act-r.psy.cmu.edu/">ACT-R Community</a>.
+          It is distributed under the <a href="https://www.gnu.org/copyleft/lesser.html">LGPL License</a>.
+        </div>
+        <div>
+          <b> Images </b></br>
+          The Lemonade Stand Logomark is based on designs copied under a
+          Creative Commons License obtained from the Noun Project:
 
-      </p>
-
-      <p>
-        <b> ACT-R </b></br>
-        ACT-R was developed by John Anderson, Dan Bothell, Christian Lebiere and
-        other members of the <a href="http://act-r.psy.cmu.edu/">ACT-R Community</a>.
-        It is distributed under the <a href="https://www.gnu.org/copyleft/lesser.html">LGPL License</a>.
-      </p>
-
-      <p>
-        <b> Images </b></br>
-        The following designs were used in the creation of the ACT-R Lemonade
-        Stand logo and educational materials under a Creative Commons License
-        obtained from the <a href="https://thenounproject.com/">Noun Project</a>:
-
-        <ul class="uk-list" style="font-size:13px; margin-left:30px;">
-            <li>"Pitcher" by Royyan Wijaya</li>
-            <li>"Brain" by Arthur Shlain</li>
-            <li>"Blocks" by Oliviu Stoiantaken</li>
-        </ul>
-      </p>
+          <ul class="uk-list" style="margin-left:30px;">
+              <li><a href="https://thenounproject.com/term/lemon-pitcher/805906/">"Pitcher" by Royyan Wijaya</a></li>
+              <li><a href="https://thenounproject.com/term/brain/844674/">"Brain" by Arthur Shlain</a></li>
+              <li><a href="https://thenounproject.com/term/blocks/735188/">"Blocks" by Oliviu Stoiantaken</a></li>
+          </ul>
+        </div>
+      </div>
     </section>
 
 
