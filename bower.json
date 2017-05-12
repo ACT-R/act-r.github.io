@@ -1,0 +1,22 @@
+{
+  "name": "act-r.github.io",
+  "homepage": "https://github.com/ACT-R/act-r.github.io",
+  "authors": [
+    "Derek Brown"
+  ],
+  "description": "Website for ACT-R Lemonade Stand",
+  "main": "index.html",
+  "license": "GPL-3.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "uikit": "^3.0.0",
+    "jquery": "^3.2.1"
+  }
+}

@@ -1,0 +1,247 @@
+<html>
+  <head>
+
+    <!-- META -->
+    <title>ACT-R Lemonade Stand</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="ACT-R Live Demo">
+    <meta name="keywords" content="ACT-R, Cognitive Architecture, Lemonade Stand">
+    <meta name="author" content="Derek Brown">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- UIKit Import -->
+    <link rel="stylesheet" href="lib/uikit/dist/css/uikit.min.css" />
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/uikit/dist/js/uikit-icons.min.js"></script>
+    <script src="lib/uikit/dist/js/uikit.min.js"></script>
+
+    <!-- Style Import -->
+    <link rel="stylesheet" href="css/actr.css">
+    <link rel="icon" sizes="16x16 32x32 48x48" href="img/favicon.ico">
+
+    <!-- Web Font Import -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <section id="header">
+      <img src="img/header.png" />
+      <h1> ACT-R Lemonade Stand </h1>
+
+      <a class="play-button uk-button uk-button-danger uk-box-shadow-hover-medium uk-button-large" href="http://actr-lemonade-stand.herokuapp.com">
+        Play Now!
+      </a>
+      <p class="uk-article-meta">
+        Note: our server runs on demand, so be patient.
+      </p>
+
+    </section>
+
+    <section id="about" class="uk-article">
+        <h1 class="uk-heading-divider">About</h1>
+
+        <h2> What is ACT-R?</h2>
+        <p>
+          ACT-R is a <a href="https://en.wikipedia.org/wiki/Cognitive_architecture">
+          cognitive architecture</a>, an extremely powerful
+          computer model for developing and testing theories of cognitive
+          behavior on a variety of tasks. Developed by
+          researchers at <a href="http://act-r.psy.cmu.edu/about/">
+          Carnegie Mellon University</a>, ACT-R is based on
+          <a href="http://act-r.psy.cmu.edu/publication/">hundreds of
+          psychological studies and papers</a>, and can provably
+          emulate human performance in both task time and accuracy.
+
+          Because of this, ACT-R is an incredible research and educational
+          tool, allowing cognitive scientists to rapidly iterate on hypotheses
+          of behavior.
+        </p>
+
+        <h2> What is ACT-R Lemonade Stand?</h2>
+        <p>
+          Because of the complexity of the ACT-R Architecture, it is difficult
+          to explain to a non-user how ACT-R can be applied to
+          psychological research.  Inspired by tools
+          tools like <a href="https://scratch.mit.edu/">MIT's Scratch Project</a>,
+          ACT-R Lemonade Stand provides a hands-on introduction to the concepts
+          of ACT-R through visual programming.  It presents students with a
+          simple example, the <a href="#game">
+          Lemonade Stand Game</a>, and teaches them to develop
+          a series of models capable of improved performance on the task.
+        </p>
+    </section>
+
+
+    <section id="game" class="uk-article">
+        <h1 class="uk-heading-divider">The Game</h1>
+        <p>
+          The Lemonade Stand Game is a commonly-used teaching tool for
+          elementary school mathematics.  There are many implementations of the
+          game (<a href="http://www.primarygames.com/socstudies/sim-lemonade-millionaire/">
+          Lemonade Millionaire</a>, for example), but all tend to have a similar
+          game cycle:
+        </p>
+
+        <ul class="uk-list" style="font-size:14px; margin-left: 40px;">
+            <li>
+              <b> Inventory View </b><br>
+              The user is shown a screen listing the quantity of lemonade
+              ingredients (Lemons, Sugar, Ice and Cups) in their inventory, as
+              well as their score (usually a dollar amount).
+            </li>
+            <li>
+              <b> Weather View </b><br>
+              The user is then shown a screen with a weather forecast, which
+              is predictive of the number of customers willing to buy
+              lemonade during that particular game cycle.
+            </li>
+            <li>
+              <b> Purchase Option </b><br>
+              The user is given the option to purchase each of the inventory
+              items (Lemons, Sugar, Ice and Cups) for a certain cost.
+            </li>
+            <li>
+              <b> End-Of-Day View </b><br>
+              Once the user has selected the option to purchase items, the day
+              begins.  The game simulates the number of cups of lemonade sold,
+              and the cycle repeats.
+            </li>
+        </ul>
+
+      <p>
+        While it naively might seem like an optimal strategy to buy the maximum
+        quantity of ingredients, the ingredients each have a probability of being
+        lost- ice melts at the end of each day, and lemons and sugar spoil with
+        some small probability. Thus, a good player must learn to purchase the
+        items in the appropriate ratio, and in just the right quantity to
+        “scrape by” for the day.
+      </p>
+
+      <div class="game-image">
+        <div class="img-wrapper">
+          <img src="img/game.png" />
+        </div>
+        <div class="text-wrapper">
+          Command-Line version of the Game.
+        </div>
+      </div>
+
+      <p>
+        The Lemonade Stand Game is a particularly good case study
+        for teaching ACT-R because there are a number of models, increasing in
+        complexity, which can be used to introduce students to the basic features
+        of ACT-R.  To do this, a Javascript implementation of the game was implemented
+        with the following game dynamics:
+      </p>
+
+      <ul class="uk-list" style="font-size:14px; margin-left: 40px;">
+          <li>
+            <b> Inventory View </b><br>
+            The user is shown a screen listing the quantity of lemonade
+            ingredients (Lemons, Sugar, Ice and Cups) in their inventory, as
+            well as their score (usually a dollar amount).
+          </li>
+          <li>
+            <b> Weather View </b><br>
+            The user is then shown a screen with a weather forecast, which
+            is predictive of the number of customers willing to buy
+            lemonade during that particular game cycle.
+          </li>
+          <li>
+            <b> Purchase Option </b><br>
+            The user is given the option to purchase each of the inventory
+            items (Lemons, Sugar, Ice and Cups) for a certain cost.
+          </li>
+          <li>
+            <b> End-Of-Day View </b><br>
+            Once the user has selected the option to purchase items, the day
+            begins.  The game simulates the number of cups of lemonade sold,
+            and the cycle repeats.
+          </li>
+      </ul>
+
+
+    </section>
+
+    <section id="lessons" class="uk-article">
+        <h1 class="uk-heading-divider">Lessons</h1>
+
+        <div uk-grid>
+          <div class="uk-width-auto@m">
+            <ul class="uk-tab-left" uk-tab='connect: .lesson-switcher'>
+                <li><a href="#">Unit 1</a></li>
+                <li><a href="#">Unit 2</a></li>
+                <li><a href="#">Unit 3</a></li>
+                <li><a href="#">Unit 4</a></li>
+                <li><a href="#">Unit 5</a></li>
+            </ul>
+          </div>
+          <div class="uk-width-expand@m">
+            <ul class="uk-switcher lesson-switcher">
+                <li>
+                  <h2> Procedures <span> | Unit 1 </span> </h2>
+                </li>
+                <li>
+                  <h2> Procedures <span> | Unit 2 </span> </h2>
+                </li>
+                <li>
+                  <h2> Procedures <span> | Unit 3 </span> </h2>
+                </li>
+                <li>
+                  <h2> Procedures <span> | Unit 4 </span> </h2>
+                </li>
+                <li>
+                  <h2> Procedures <span> | Unit 5 </span> </h2>
+                </li>
+            </ul>
+          </div>
+        </div>
+    </section>
+
+    <section id="design" class="uk-article">
+        <h1 class="uk-heading-divider">Design</h1>
+
+        <img src="img/diagram.png" />
+
+        <p>
+        </p>
+
+        <a class="github-button uk-button uk-button-secondary uk-box-shadow-hover-medium uk-button-large" href="http://actr-lemonade-stand.herokuapp.com">
+          View on GitHub
+        </a>
+    </section>
+
+    <!-- FOOTER -->
+    <section id="footer">
+      <h1 class="uk-heading-divider">Citations</h1>
+
+      <p>
+        <b> ACT-R Lemonade Stand </b></br>
+
+      </p>
+
+      <p>
+        <b> ACT-R </b></br>
+        ACT-R was developed by John Anderson, Dan Bothell, Christian Lebiere and
+        other members of the <a href="http://act-r.psy.cmu.edu/">ACT-R Community</a>.
+        It is distributed under the <a href="https://www.gnu.org/copyleft/lesser.html">LGPL License</a>.
+      </p>
+
+      <p>
+        <b> Images </b></br>
+        The following designs were used in the creation of the ACT-R Lemonade
+        Stand logo and educational materials under a Creative Commons License
+        obtained from the <a href="https://thenounproject.com/">Noun Project</a>:
+
+        <ul class="uk-list" style="font-size:13px; margin-left:30px;">
+            <li>"Pitcher" by Royyan Wijaya</li>
+            <li>"Brain" by Arthur Shlain</li>
+            <li>"Blocks" by Oliviu Stoiantaken</li>
+        </ul>
+      </p>
+    </section>
+
+
+  </body>
+</head>
