@@ -57,10 +57,8 @@ section#about {
 
 section#lessons .uk-tab > li {
   line-height: 40px; }
-section#lessons #lesson-switcher h2 {
-  font-weight: 100; }
-  section#lessons #lesson-switcher h2 > span {
-    color: #999; }
+section#lessons .lesson-switcher h2 > span {
+  color: #999; }
 
 section#interface iframe {
   width: 100%;
@@ -68,6 +66,9 @@ section#interface iframe {
 
 section#design .uk-tab > li {
   line-height: 40px; }
+section#design .install-steps > li {
+  margin-top: 20px;
+  margin-bottom: 20px; }
 
 section#footer {
   padding: 30px;

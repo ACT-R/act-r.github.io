@@ -91,10 +91,8 @@ section#about{
      line-height:40px;
    }
 
-   #lesson-switcher{
+   .lesson-switcher{
      h2 {
-       font-weight: 100;
-
        & > span{
          color: #999;
        }
@@ -112,6 +110,13 @@ section#about{
  section#design{
    .uk-tab > li{
      line-height:40px;
+   }
+
+   .install-steps{
+     & > li{
+       margin-top:20px;
+       margin-bottom:20px;
+     }
    }
  }
 

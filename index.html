@@ -239,7 +239,6 @@
 
     <section id="interface" class="uk-article">
         <h1 class="uk-heading-divider">Interface</h1>
-        <iframe src="https://www.youtube.com/embed/mOdUHqGPCDo?showinfo=0" frameborder="0" allowfullscreen></iframe>
     </section>
 
     <section id="lessons" class="uk-article">
@@ -258,7 +257,6 @@
             <ul class="uk-switcher lesson-switcher">
                 <li>
                   <h2> Fixed Strategy <span> | Unit 1 </span> </h2>
-
                 </li>
                 <li>
                   <h2> Visual Module <span> | Unit 2 </span> </h2>
@@ -282,13 +280,15 @@
             <ul class="uk-tab-left" uk-tab='connect: .design-switcher'>
                 <li><a href="#">Overview</a></li>
                 <li><a href="#">Game</a></li>
-                <li><a href="#">ACT-R</a></li>
                 <li><a href="#">Blocks</a></li>
+                <li><a href="#">ACT-R</a></li>
                 <li><a href="#">Deployment</a></li>
             </ul>
           </div>
           <div class="uk-width-expand@m">
             <ul class="uk-switcher design-switcher">
+
+                <!-- OVERVIEW -->
                 <li>
                   <h2> Design Overview </h2>
 
@@ -297,19 +297,199 @@
                       <img src="img/diagram.png" style="max-width:700px;" />
                     </div>
                   </div>
-
                 </li>
+
+                <!-- GAME -->
                 <li>
                   <h2> Lemonade Stand Game </h2>
+
+                  <p>
+                    While many implementations of the Lemonade Stand Game exist,
+                    the versions that are available are predominately Flash Games,
+                    which don't have an external interface for controlling user
+                    actions (which is needed to connect the game to ACT-R).  Thus,
+                    a <a href="https://github.com/ACT-R/Lemonade-Stand/blob/master/server/game.js">
+                    Javascript version</a> of the Lemonade Stand Game was developed
+                    specifically for ACT-R Lemonade Stand.
+                  </p>
+
+                  <p>
+                    The game was developed in an object-oriented fashion using
+                    Javascript ES6, such that the main GameState class can be called
+                    from both an ACT-R and Human interface.  The game stores previous
+                    moves, so that accuracy and score differentials can be computed,
+                    and has statically-defined constants so that game settings can
+                    be tweaked easily in later versions, or to test that students
+                    are actually using utility learning, as opposed to hardcoding
+                    a strategy.
+                  </p>
+
+                  <p>
+                    The human interface to the game was developed using the
+                    <a href="https://github.com/sboudrias/Inquirer.js"> Inquirer</a>
+                    library, a tool for creating command line applications in Node.JS.
+                    A browser-based version of the game is currently under development.
+                    The ACT-R interface is described in more detail in a later section.
+                  </p>
+
+
                 </li>
-                <li>
-                  <h2> ACT-R Interface </span> </h2>
-                </li>
+
+                <!-- BLOCKS -->
                 <li>
                   <h2> Block Interface </h2>
+
+                  <p>
+                    The Visual Programming (Block) interface for the ACT-R
+                    Lemonade Stand Game was developed using
+                    <a href="https://developers.google.com/blockly/">Blockly</a>,
+                    an Open Source library for creating a block-based UI. This library
+                    was extended for the purposes of ACT-R in a number of ways:
+
+                    <ul class="uk-list" style="font-size:14Spx; margin-left:30px; margin-bottom:20px;">
+                      <li>
+                        <b>Auto-Fill Button</b><br>
+                        The default version of Blockly doesn't allow for the
+                        creation of custom buttons on blocks, which was needed
+                        for the "auto-fill" button used on the production-component
+                        block.  In order to do this, a Forked version of Blockly
+                        was created allowing for image fields to contain an
+                        onclick method.  This feature is currently an
+                        <a href="https://github.com/google/blockly/pull/1080">active
+                        pull request</a> for the whole of the Blockly project.
+                      </li>
+                      <li>
+                        <b>Default Blocks</b><br>
+                        Some of the blocks (such as slots) are used in a number
+                        of contexts because this allows for code reuse in the
+                        generation phase (discussed below).  However, it isn't
+                        necessarily clear to a user that these blocks are supposed
+                        to be combined in such a way.  To make this more clear
+                        certain blocks, when added to the workspace, are attached
+                        to default blocks.
+                      </li>
+                      <li>
+                        <b>ACT-R Generation</b><br>
+                        Blockly contains code for auto-generating a number of
+                        languages, such as Javascript and PHP, but not LISP
+                        and most certainly not ACT-R.  Therefore, the bulk of the
+                        code written for the Blockly interface dealt with defining
+                        the shape, characteristics, and code generation associated
+                        with each block.
+                      </li>
+                    </ul>
+                  </p>
+                  <p>
+                    When the blocks in the workspace are modified, code is generated
+                    according to the rules defined in Blockly.  The
+                    generated code is piped into a read-only code editor, based on
+                    the Open-Source <a href="https://ace.c9.io/">Ace Editor</a>,
+                    between specified <span style="font-size:12px">";;BEGIN-MODEL"</span>
+                    and <span style="font-size:12px">";END-MODEL"</span> tags, so
+                    as to overwrite the model code without replacing the functions
+                    needed to call the model.  Load and save functionality are
+                    implemented by reading and writing to the workspace (.xml)
+                    and read-only editor (.lisp) simultaneously, so as to replace
+                    both the model and surrounding code.
+                  </p>
+                  <p>
+                    Upon pressing the "run" button, the code inside the editor
+                    is sent to the server via a <a href="https://guide.meteor.com/methods.html">Meteor Method</a>,
+                    which triggers the execution of the ACT-R Interface backend.
+                    As the model runs, the command line output, as well as results
+                    are put into a session-specific temporary Mongo Database
+                    subscribed to by the client.
+                  </p>
+
+                  <p>
+                    The live console view (bottom right) is built using
+                    a reactive <a href="https://www.meteor.com/blaze">Blaze</a>
+                    template.  It places messages (sent on errors and success),
+                    in the top of the console, while displaying error output
+                    using CSS highlighting taken from the Open Source
+                    <a href="https://github.com/sourcelair/xterm.js/">xterm.js</a>
+                    package.
+                  </p>
+                  <p>
+                    The graph (upper right) subscribes to a Mongo Database specific
+                    for raw data (stored as a JSON Object) sent by the client, and
+                    is constructed reactively using the <a href="https://gionkunz.github.io/chartist-js/">
+                    Chartist</a> library.
+                  </p>
                 </li>
+
+                <!-- ACT-R -->
+                <li>
+                  <h2> ACT-R Interface </h2>
+
+
+                </li>
+
+                <!-- DEPLOYMENT -->
                 <li>
                   <h2> Deployment </h2>
+
+                  <p>
+                    ACT-R Lemonade Stand is extremely easy to install and setup,
+                    Simply follow the steps below:
+
+                    <ol class="install-steps">
+                      <li>
+                        <b>Install Meteor</b><br>
+                        Meteor is a server development stack containing NodeJS,
+                        MongoDB, and the Blaze frontend
+                        and is available for Linux and MacOS:
+                        <a href="https://www.meteor.com/install">Download here</a>
+                        or via your package manager.
+
+                      </li>
+                      <li>
+                        <b>Install Bower</b><br>
+                        Bower is a static dependency managment tool.  After
+                        installing Meteor, it can be installed with "meteor npm install -g bower".
+                        Additional instructions on <a href="https://bower.io/">Bower's website</a>.
+
+                      </li>
+                      <li>
+                        <b>Clone the ACT-R Lemonade Stand Repo</b><br>
+                        Download
+                        <a href="https://github.com/ACT-R/Lemonade-Stand">our repository</a>
+                        into a local directory.
+
+                      </li>
+
+                      <li>
+                        <b>Install</b><br>
+                        Run "meteor npm install" in the application directory
+                         to download the neccessary dependencies
+                        and setup the application environment.  Report any errors
+                        during installation to our <a href="https://github.com/ACT-R/Lemonade-Stand/issues"> issues page</a>.
+                      </li>
+
+                      <li>
+                        <b>Launch</b><br>
+                        ACT-R Lemonade Stand can be launched for local testing
+                        and development by running "meteor" in the application
+                        directory.
+                        <br>
+                        <br>
+                        For production deployments, one should read the
+                        <a href="https://guide.meteor.com/deployment.html">Meteor Deployment Guide</a>,
+                        as the "meteor" command is not suited for production deployments.  Rather,
+                        Meteor compiles the application to a regular Node.JS Application,
+                        which can be run using <a href="https://github.com/foreverjs/forever">Forever</a>.
+                      </li>
+                    </ol>
+                  </p>
+
+                  <p>
+                    ACT-R Lemonade Stand is actively hosted on
+                    <a href="http://heroku.com">Heroku Cloud</a>,
+                    and is automatically rebuilt by pushes to the Master branch
+                    of the <a href="https://github.com/ACT-R/Lemonade-Stand">GitHub Repository</a>.
+                    It makes use of the <a href="https://github.com/AdmitHub/meteor-buildpack-horse"> Meteor Buildpack</a>,
+                    for automated compilation and deployment.
+                  </p>
 
                 </li>
             </ul>
