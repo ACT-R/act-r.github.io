@@ -86,8 +86,8 @@
         <p>
           The Lemonade Stand Game is a commonly-used teaching tool for
           elementary school mathematics.  There are many implementations of the
-          game (<a href="http://www.primarygames.com/socstudies/sim-lemonade-millionaire/">Lemonade Millionaire</a>,
-          for example), but all tend to have a similar
+          game (<a href="http://www.freeonlinegames.com/tag/food-serve-games/sim-lemonade">SimLemonade</a>,
+          for example, pictured in the screenshots below), but all tend to have a similar
           game cycle:
         </p>
 
@@ -102,6 +102,10 @@
                   The user is shown a screen listing the quantity of lemonade
                   ingredients (Lemons, Sugar, Ice and Cups) in their inventory, as
                   well as their score (usually a dollar amount).
+
+                  <br>
+                  <br>
+                  <a href="http://www.freeonlinegames.com/tag/food-serve-games/sim-lemonade">Source: SimLemonade</a>
                 </div>
             </div>
           </div>
@@ -115,6 +119,10 @@
                   The user is then shown a screen with a weather forecast, which
                   is predictive of the number of customers willing to buy
                   lemonade during that particular game cycle.
+
+                  <br>
+                  <br>
+                  <a href="http://www.freeonlinegames.com/tag/food-serve-games/sim-lemonade">Source: SimLemonade</a>
                 </div>
             </div>
           </div>
@@ -128,6 +136,10 @@
                   The user is given the option to purchase each of the inventory
                   items (Lemons, Sugar, Ice and Cups) for a certain cost.  This
                   implementation has bulk options (not included in our version).
+
+                  <br>
+                  <br>
+                  <a href="http://www.freeonlinegames.com/tag/food-serve-games/sim-lemonade">Source: SimLemonade</a>
                 </div>
             </div>
           </div>
@@ -141,6 +153,10 @@
                   Once the user has completed their turn, the day
                   begins.  The game simulates the number of cups of lemonade sold,
                   and the cycle repeats.
+
+                  <br>
+                  <br>
+                  <a href="http://www.freeonlinegames.com/tag/food-serve-games/sim-lemonade">Source: SimLemonade</a>
                 </div>
             </div>
           </div>
@@ -292,11 +308,34 @@
                 <li>
                   <h2> Design Overview </h2>
 
+                  <p>
+                    ACT-R Lemonade Stand is a relatively complex application,
+                    as it requires constructing, then executing Lisp code
+                    from within the browser.  In order to facilitate this,
+                    it makes use of the <a href="https://www.meteor.com/">Meteor Framework</a>,
+                    which combines NodeJS, MongoDB and the Blaze frontend in a single platform
+                    for developing powerful Javascript applications.
+                  </p>
+
                   <div class="caption-box">
                     <div class="img-wrapper" style="background-color:#FFF">
                       <img src="img/diagram.png" style="max-width:700px;" />
                     </div>
                   </div>
+
+                  <p>
+                    The above diagram provides an overview of the many modules which
+                    work in synchrony to run ACT-R Lemonade Stand.  All of the code
+                    is open source, and licensed under the <a href="https://github.com/ACT-R/Lemonade-Stand/blob/master/LICENSE">
+                    GNU Public License v3</a>, available for download on our GitHub page:
+                  </p>
+
+                  <center>
+                    <a class="github-button uk-button uk-button-primary uk-box-shadow-hover-medium uk-button-large" href="https://github.com/ACT-R" uk-icon="icon: github">
+                      ACT-R Lemonade on GitHub
+                    </a>
+                  </center>
+
                 </li>
 
                 <!-- GAME -->
@@ -343,7 +382,7 @@
                     The Visual Programming (Block) interface for the ACT-R
                     Lemonade Stand Game was developed using
                     <a href="https://developers.google.com/blockly/">Blockly</a>,
-                    an Open Source library for creating a block-based UI. This library
+                    an open source library for creating a block-based UI. This library
                     was extended for the purposes of ACT-R in a number of ways:
 
                     <ul class="uk-list" style="font-size:14Spx; margin-left:30px; margin-bottom:20px;">
@@ -383,14 +422,17 @@
                     When the blocks in the workspace are modified, code is generated
                     according to the rules defined in Blockly.  The
                     generated code is piped into a read-only code editor, based on
-                    the Open-Source <a href="https://ace.c9.io/">Ace Editor</a>,
+                    the open source <a href="https://ace.c9.io/">Ace Editor</a>,
                     between specified <span style="font-size:12px">";;BEGIN-MODEL"</span>
-                    and <span style="font-size:12px">";END-MODEL"</span> tags, so
+                    and <span style="font-size:12px">";;END-MODEL"</span> tags, so
                     as to overwrite the model code without replacing the functions
-                    needed to call the model.  Load and save functionality are
-                    implemented by reading and writing to the workspace (.xml)
-                    and read-only editor (.lisp) simultaneously, so as to replace
-                    both the model and surrounding code.
+                    needed to call the model.  Load functionality is
+                    implemented by populating the blockly workspace
+                    and the read-only editor from files (.xml and .lisp)
+                    simultaneously, so as to replace
+                    both the model and surrounding code.  Save functionality outputs
+                    these two files to the user via the <a href="https://stuk.github.io/jszip/">jszip</a>
+                    package.
                   </p>
                   <p>
                     Upon pressing the "run" button, the code inside the editor
@@ -406,8 +448,8 @@
                     a reactive <a href="https://www.meteor.com/blaze">Blaze</a>
                     template.  It places messages (sent on errors and success),
                     in the top of the console, while displaying error output
-                    using CSS highlighting taken from the Open Source
-                    <a href="https://github.com/sourcelair/xterm.js/">xterm.js</a>
+                    using CSS highlighting taken from the open source
+                    <a href="https://github.com/sourcelair/xterm.js/">XTerm.js</a>
                     package.
                   </p>
                   <p>
@@ -422,6 +464,45 @@
                 <li>
                   <h2> ACT-R Interface </h2>
 
+                  <p>
+                    The most difficult development challenge of ACT-R Lemonade Stand
+                    was to execute ACT-R Models, which are written in Lisp, from the browser.
+                    To enable this, ACT-R Lemonade Stand downloads
+                    <a href="https://ccl.clozure.com/">Clozure Common Lisp (CCL)</a>,
+                    and the <a href="http://act-r.psy.cmu.edu/software/">ACT-R Library</a>
+                    to the private folder upon installation.
+                  </p>
+
+                  <p>
+                    When the browser is ready to execute a model, it is sent via a
+                    <a href="https://guide.meteor.com/methods.html">Meteor Method</a>
+                    to the server, where it is saved as a temporary file
+                    using the <a href="https://www.npmjs.com/package/tmp">Tmp</a>
+                    package, ensuring the file is deleted upon termination of the session.
+                    The server then spawns a new CCL process wrapped with
+                    the <a href="http://man7.org/linux/man-pages/man1/timeout.1.html">
+                    Unix Timeout</a> command, which ensures that the process exits.
+                  </p>
+                  <p>
+                    The output and input to the CCL process are piped through
+                    <a href="https://github.com/nodejitsu/nexpect">NExpect</a>,
+                    a NodeJS implementation of the Perl <a href="http://search.cpan.org/~rgiersig/Expect-1.21/Expect.pod">expect</a> library.
+                    Nexpect passes the ACT-R library and the user's model as arguments to the CCL
+                    process, and handles any unexpected output to the user via the
+                    live console.  Otherwise, it executes the game loop by
+                    executing the run-game command in the CCL
+                    process, and parsing the output so that it can be passed back into
+                    the game interface.  At each step, the relevant output is
+                    published to the session database so that it is immediately
+                    viewable by the user.
+                  </p>
+                  <p>
+                    Nexpect was designed only to handle commands generated at compile-time,
+                    where ACT-R Lemonade Stand's usecase required commands be generated
+                    dynamically (to handle input from game states).  Nexpect was therefore
+                    extended to include this functionality, which is the subject of two
+                    active <a href="https://github.com/nodejitsu/nexpect/pulls">pull requests</a>.
+                  </p>
 
                 </li>
 

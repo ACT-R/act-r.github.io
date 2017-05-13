@@ -66,9 +66,11 @@ section#interface iframe {
 
 section#design .uk-tab > li {
   line-height: 40px; }
-section#design .install-steps > li {
-  margin-top: 20px;
-  margin-bottom: 20px; }
+section#design .install-steps {
+  margin-left: 40px; }
+  section#design .install-steps > li {
+    margin-top: 20px;
+    margin-bottom: 20px; }
 
 section#footer {
   padding: 30px;
