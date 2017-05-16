@@ -255,6 +255,37 @@
 
     <section id="interface" class="uk-article">
         <h1 class="uk-heading-divider">Interface</h1>
+        <img src="img/if.png" />
+
+        <p>
+          The ACT-R Lemonade Stand's design is heavily influenced by
+           <a href="https://scratch.mit.edu/">MIT's Scratch Project</a>. The left
+           half of the window is a visual-programming block editor.  On the
+           furthest left is the block toolbox, demonstrating the blocks which
+           can be added to the editor, and on the right is the workspace,
+           or the blocks active in the workspace.  One can add blocks to the
+           workspace by dragging from the toolbox, and editing the values.
+           The blocks within the workspace are then compiled into ACT-R code,
+           displayed in the editor view, which can be seen by clicking the
+           tab in the top bar.
+        </p>
+        <p>
+          The right half of the window is dedicated to execution; on the
+          bottom right is a console view, which displays live output from
+          the LISP Environment, as well as error messages from the server
+          from during the model's execution.  In the top right is a graphical
+          display of the model's score on the task, allowing one to judge
+          the effectiveness of a model in completing the task.
+        </p>
+        <p>
+          A row of three buttons; play, save, and load are available in the
+          top bar.  The play button executes the current model on the server,
+          returning the results.  The save button downloads a copy of the
+          current model as a .zip file.  This contains a copy of an .xml
+          file defining the blocks and their locations, as well as a .lisp
+          file which contains the generated model.  Finally, the load button
+          enables the user to load each of the units directly for demo purposes.
+        </p>
     </section>
 
     <section id="lessons" class="uk-article">
@@ -273,15 +304,42 @@
             <ul class="uk-switcher lesson-switcher">
                 <li>
                   <h2> Fixed Strategy <span> | Unit 1 </span> </h2>
+                  This module teaches students the basics of the procedural module
+                  by chaining four simple productions together to produce a
+                  model which presses every key on every turn:
+
+                  <div class="code-wrapper">
+                    <script src="http://gist-it.appspot.com/http://github.com/ACT-R/Lemonade-Stand/blob/master/public/models/unit1.lisp"></script>
+                  </div>
                 </li>
                 <li>
-                  <h2> Visual Module <span> | Unit 2 </span> </h2>
+                  <h2> Variable Strategy Module <span> | Unit 2 </span> </h2>
+                  This module teaches students how to use comparison functions
+                  to develop a smarter AI, deciding to buy only on warm
+                  days and when the AI is in need to supplies:
+
+                  <div class="code-wrapper">
+                    <script src="http://gist-it.appspot.com/http://github.com/ACT-R/Lemonade-Stand/blob/master/public/models/unit2.lisp"></script>
+                  </div>
                 </li>
                 <li>
-                  <h2> Declarative Module <span> | Unit 3 </span> </h2>
+                  <h2> Visual Module Module <span> | Unit 3 </span> </h2>
+                  This module introduces students to the visual module
+                  (perhaps the most complicated module in ACT-R):
+
+                  <div class="code-wrapper">
+                    <script src="http://gist-it.appspot.com/http://github.com/ACT-R/Lemonade-Stand/blob/master/public/models/unit3.lisp"></script>
+                  </div>
                 </li>
                 <li>
                   <h2> Utility Learning <span> | Unit 4 </span> </h2>
+                  This module teaches students about the ACT-R Utility Learning
+                  module, developing a simple mechanism for learning to play
+                  the game differently in different weather conditions.
+
+                  <div class="code-wrapper">
+                    <script src="http://gist-it.appspot.com/http://github.com/ACT-R/Lemonade-Stand/blob/master/public/models/unit4.lisp"></script>
+                  </div>
                 </li>
             </ul>
           </div>

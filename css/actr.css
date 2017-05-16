@@ -57,6 +57,10 @@ section#about {
 
 section#lessons .uk-tab > li {
   line-height: 40px; }
+section#lessons .code-wrapper {
+  max-height: 300px;
+  overflow-y: scroll;
+  margin-top: 20px; }
 section#lessons .lesson-switcher h2 > span {
   color: #999; }
 

@@ -91,6 +91,12 @@ section#about{
      line-height:40px;
    }
 
+   .code-wrapper{
+     max-height:300px;
+     overflow-y: scroll;
+     margin-top:20px;
+   }
+
    .lesson-switcher{
      h2 {
        & > span{
